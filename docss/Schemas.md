@@ -1,5 +1,6 @@
 # Schema Pydantic - Backend
 
+
 Este módulo define los esquemas utilizados para validar y gestionar los datos en la aplicación.
 
 
