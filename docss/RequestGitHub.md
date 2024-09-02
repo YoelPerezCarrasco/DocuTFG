@@ -1,4 +1,4 @@
-# Interacción con la API de GitHub
+# Recolección API GitHub - Backend
 
 Este documento explica el funcionamiento del código que se encarga de interactuar con la API de GitHub para obtener información sobre usuarios, organizaciones, repositorios, contribuciones, commits y lenguajes dominantes.
 
