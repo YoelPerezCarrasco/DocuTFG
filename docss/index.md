@@ -7,6 +7,7 @@ Bienvenido a la Documentación Técnica del Proyecto
 :maxdepth: 1
 
 Backend.md
+CentroVistas.md
 Crud.md
 RequestGitHub.md
 Schemas.md

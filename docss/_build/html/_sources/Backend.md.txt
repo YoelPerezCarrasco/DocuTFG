@@ -1,4 +1,4 @@
-# MyParrallelOrg - Backend
+# API/Instalación/Modelos - Middleware
 
 Este proyecto es una API desarrollada con FastAPI que permite gestionar usuarios y sus contribuciones a repositorios de GitHub, así como realizar autenticación y autorización basada en JWT. 
 

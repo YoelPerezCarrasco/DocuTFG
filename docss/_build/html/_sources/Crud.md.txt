@@ -1,4 +1,4 @@
-# Crud - Grafo
+# Grafo Conexiones - Backend
 
 Este documento explica el funcionamiento del código que se encarga de construir un grafo de usuarios en base a ciertos criterios. El código utiliza la biblioteca `networkx` para manejar grafos y SQLAlchemy para interactuar con la base de datos.
 

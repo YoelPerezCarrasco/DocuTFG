@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interacción con la API de GitHub &mdash; documentación de MyParallelOrg - 0.1</title>
+  <title>Recolección API GitHub - Backend &mdash; documentación de MyParallelOrg - 0.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -22,7 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="prev" title="Crud - Grafo" href="Crud.html" /> 
+    <link rel="next" title="Schema Pydantic - Backend" href="Schemas.html" />
+    <link rel="prev" title="Grafo Conexiones - Backend" href="Crud.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,27 +47,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Indice</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Backend.html">MyParrallelOrg - Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crud.html">Crud - Grafo</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Interacción con la API de GitHub</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Backend.html">API/Instalación/Modelos - Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CentroVistas.html">Documentación del Frontend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crud.html">Grafo Conexiones - Backend</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Recolección API GitHub - Backend</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#descripcion-general">Descripción General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dependencias">Dependencias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#codigo">Código</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#configuracion-de-logging-y-token-de-github">Configuración de Logging y Token de GitHub</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#funciones-para-interactuar-con-la-api-de-github">Funciones para Interactuar con la API de GitHub</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#requestgithub.fetch_github_user"><code class="docutils literal notranslate"><span class="pre">fetch_github_user()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requestgithub.fetch_github_org_repos"><code class="docutils literal notranslate"><span class="pre">fetch_github_org_repos()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requestgithub.fetch_github_repo_contributors"><code class="docutils literal notranslate"><span class="pre">fetch_github_repo_contributors()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requestgithub.fetch_github_repo_commits"><code class="docutils literal notranslate"><span class="pre">fetch_github_repo_commits()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requestgithub.fetch_github_user_details"><code class="docutils literal notranslate"><span class="pre">fetch_github_user_details()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requestgithub.fetch_user_dominant_language"><code class="docutils literal notranslate"><span class="pre">fetch_user_dominant_language()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#requestgithub.fetch_github_user_stars"><code class="docutils literal notranslate"><span class="pre">fetch_github_user_stars()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funciones-para-interactuar-con-la-api-de-github">Funciones para Interactuar con la API de GitHub</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">Schema Pydantic - Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Database.html">Conexion BD - Backend</a></li>
 </ul>
 
         </div>
@@ -83,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Interacción con la API de GitHub</li>
+      <li class="breadcrumb-item active">Recolección API GitHub - Backend</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/RequestGitHub.md.txt" rel="nofollow"> Ver código fuente de la página</a>
       </li>
@@ -93,8 +88,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="interaccion-con-la-api-de-github">
-<h1>Interacción con la API de GitHub<a class="headerlink" href="#interaccion-con-la-api-de-github" title="Link to this heading"></a></h1>
+  <section id="recoleccion-api-github-backend">
+<h1>Recolección API GitHub - Backend<a class="headerlink" href="#recoleccion-api-github-backend" title="Link to this heading"></a></h1>
 <p>Este documento explica el funcionamiento del código que se encarga de interactuar con la API de GitHub para obtener información sobre usuarios, organizaciones, repositorios, contribuciones, commits y lenguajes dominantes.</p>
 <section id="descripcion-general">
 <h2>Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h2>
@@ -132,11 +127,6 @@
 <ol class="arabic simple">
 <li><p>Obtener Información de Usuario de GitHub</p></li>
 </ol>
-<dl class="py function">
-<dt class="sig sig-object py" id="requestgithub.fetch_github_user">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requestgithub.</span></span><span class="sig-name descname"><span class="pre">fetch_github_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#requestgithub.fetch_github_user" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_github_user</span><span class="p">(</span><span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.github.com/users/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -159,11 +149,6 @@
 <ol class="arabic simple" start="2">
 <li><p>Obtener Repositorios de una Organización</p></li>
 </ol>
-<dl class="py function">
-<dt class="sig sig-object py" id="requestgithub.fetch_github_org_repos">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requestgithub.</span></span><span class="sig-name descname"><span class="pre">fetch_github_org_repos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">org</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#requestgithub.fetch_github_org_repos" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_github_org_repos</span><span class="p">(</span><span class="n">org</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.github.com/orgs/</span><span class="si">{</span><span class="n">org</span><span class="si">}</span><span class="s2">/repos&quot;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -198,11 +183,6 @@
 <ol class="arabic simple" start="3">
 <li><p>Obtener Contribuyentes de un Repositorio</p></li>
 </ol>
-<dl class="py function">
-<dt class="sig sig-object py" id="requestgithub.fetch_github_repo_contributors">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requestgithub.</span></span><span class="sig-name descname"><span class="pre">fetch_github_repo_contributors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">org</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#requestgithub.fetch_github_repo_contributors" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_github_repo_contributors</span><span class="p">(</span><span class="n">org</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.github.com/repos/</span><span class="si">{</span><span class="n">org</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/contributors&quot;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -225,11 +205,6 @@
 <ol class="arabic simple" start="4">
 <li><p>Obtener Commits de un Repositorio</p></li>
 </ol>
-<dl class="py function">
-<dt class="sig sig-object py" id="requestgithub.fetch_github_repo_commits">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requestgithub.</span></span><span class="sig-name descname"><span class="pre">fetch_github_repo_commits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">org</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#requestgithub.fetch_github_repo_commits" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_github_repo_commits</span><span class="p">(</span><span class="n">org</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.github.com/repos/</span><span class="si">{</span><span class="n">org</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/commits&quot;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -252,11 +227,6 @@
 <ol class="arabic simple" start="5">
 <li><p>Obtener Detalles de Usuario de GitHub</p></li>
 </ol>
-<dl class="py function">
-<dt class="sig sig-object py" id="requestgithub.fetch_github_user_details">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requestgithub.</span></span><span class="sig-name descname"><span class="pre">fetch_github_user_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#requestgithub.fetch_github_user_details" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_github_user_details</span><span class="p">(</span><span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.github.com/users/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -279,23 +249,6 @@
 <ol class="arabic simple" start="6">
 <li><p>Obtener Lenguaje Dominante de un Usuario</p></li>
 </ol>
-<dl class="py function">
-<dt class="sig sig-object py" id="requestgithub.fetch_user_dominant_language">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requestgithub.</span></span><span class="sig-name descname"><span class="pre">fetch_user_dominant_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#requestgithub.fetch_user_dominant_language" title="Link to this definition"></a></dt>
-<dd><p>Fetch the dominant language used by a GitHub user across all their repositories.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>username</strong> – The GitHub username.</p></li>
-<li><p><strong>github_token</strong> – GitHub personal access token for authentication.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Devuelve<span class="colon">:</span></dt>
-<dd class="field-even"><p>The dominant language (string) or None if there’s an error.</p>
-</dd>
-</dl>
-</dd></dl>
-
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_user_dominant_language</span><span class="p">(</span><span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.github.com/users/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">/repos&quot;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -345,11 +298,6 @@
 <ol class="arabic simple" start="7">
 <li><p>Obtener el Total de Estrellas de un Usuario</p></li>
 </ol>
-<dl class="py function">
-<dt class="sig sig-object py" id="requestgithub.fetch_github_user_stars">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requestgithub.</span></span><span class="sig-name descname"><span class="pre">fetch_github_user_stars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#requestgithub.fetch_github_user_stars" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_github_user_stars</span><span class="p">(</span><span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.github.com/users/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">/repos&quot;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -380,7 +328,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
-        <a href="Crud.html" class="btn btn-neutral float-left" title="Crud - Grafo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="Crud.html" class="btn btn-neutral float-left" title="Grafo Conexiones - Backend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="Schemas.html" class="btn btn-neutral float-right" title="Schema Pydantic - Backend" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

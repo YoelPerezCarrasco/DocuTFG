@@ -1,4 +1,4 @@
-# Conexion BD
+# Conexion BD - Backend
 
 Este documento describe el código Python utilizado para configurar la conexión a una base de datos PostgreSQL utilizando SQLAlchemy, así como la creación de una sesión de base de datos y el manejo de la sesión dentro de un contexto gestionado.
 
